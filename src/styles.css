@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/bulma/css/bulma.css";
+/*@import '../node_modules/bulma-steps-component/bulma-steps.sass';*/
+@import "../node_modules/bulma-dashboard/dist/bulma-dashboard.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../node_modules/font-awesome/css/font-awesome.css";
+
+body {
+    /* background: #353A3E; */
+}
+
+a {
+    text-decoration: none !important;
+} 
+
+.flashMessage {
+    padding-top: 1.5%;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    text-align: center;
+    padding-bottom: 1.5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+    margin-bottom: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.flash-success {
+    color: rgb(255, 255, 255);
+    background-color: #26D060;
+}
+
+.flash-danger {
+    color: rgb(255, 255, 255);
+    background-color: #FF3860;
+}
+

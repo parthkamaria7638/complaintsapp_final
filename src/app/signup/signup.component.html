@@ -1,0 +1,194 @@
+
+<!--<app-spinner *ngIf="showSpinner"></app-spinner>
+<div class="centered">
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" [class.is-danger]="!isEmailValid" [(ngModel)]="email_" name="email_" type="email" placeholder="Email">
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span *ngIf="!isEmailValid" class="icon is-small is-right">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+    </p>
+      <p *ngIf="!isEmailValid" class="help is-danger">This email is invalid</p>
+  </div>
+  <div class="field">
+    <div class="field-body">
+    <div class="field">
+      <p class="control is-expanded has-icons-left">
+        <input class="input" type="text" placeholder="Username">
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+        <div class="field-label"></div>
+        <div class="field-body">
+          <div class="field is-expanded">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  +91
+                </a>
+              </p>
+              <p class="control is-expanded">
+                <input class="input" type="tel" placeholder="Phone Number">
+              </p>
+            </div>
+          </div>
+        </div>      
+    </div>
+  </div>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="Password">
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-success" type="submit" (click)="signUp()">
+        Sign Up
+      </button>
+    </p>
+  </div>
+</div> -->
+
+
+<div class="centered">
+<!-- <article *ngIf="showSuccess" class="message is-success">
+  <div class="message-header">
+    <p>Account Created Successfully</p>
+  </div>
+</article> -->
+
+<form [formGroup]="form">
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" 
+      [class.is-danger]="email.touched && email.invalid" 
+      [class.is-success]="email.valid"
+      formControlName="email" type="email" placeholder="Email">
+      <span class="icon is-small is-left" 
+      [class.has-text-danger]="email.touched && email.invalid"
+      [class.has-text-success]="email.valid">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span *ngIf="email.touched && email.invalid" class="icon is-small is-right has-text-danger">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+      <span *ngIf="email.valid" class="icon is-small is-right has-text-success">
+        <i class="fa fa-check"></i>
+      </span>
+    </p>
+      <div *ngIf="email.touched && email.invalid">
+        <p *ngIf="email.errors.required" class="help is-danger">Email is required</p>
+        <p *ngIf="email.errors.email && email.dirty" class="help is-danger">Email is invalid</p>
+        <p *ngIf="email.errors.notAUniqueEmail" class="help is-danger">Email already in use</p>
+      </div>
+
+      <progress *ngIf="email.pending" class="progress is-one-quarter is-primary" max="100">15%</progress>
+  </div>
+  <div class="field">
+    <div class="field-body">
+    <div class="field">
+      <p class="control is-expanded has-icons-left has-icons-right">
+        <input class="input" [class.is-danger]="username.touched && username.invalid" 
+        [class.is-success]="username.valid"
+        type="text" formControlName="username" placeholder="Username">
+        <span class="icon is-small is-left" 
+        [class.has-text-danger]="username.touched && username.invalid"
+        [class.has-text-success]="username.valid">
+          <i class="fa fa-user"></i>
+        </span>
+        <span *ngIf="username.touched && username.invalid" class="icon is-small is-right has-text-danger">
+          <i class="fa fa-exclamation-triangle"></i>
+        </span>
+        <span *ngIf="username.valid" class="icon is-small is-right has-text-success">
+          <i class="fa fa-check"></i>
+        </span>
+      </p>
+      <div *ngIf="username.touched && username.invalid">
+        <p *ngIf="username.errors.required" class="help is-danger">Username is required</p>
+        <p *ngIf="username.errors.cannotContainSpace" class="help is-danger">Username cannot contain spaces</p>
+        <p *ngIf="username.errors.minlength" class="help is-danger">Username must be {{ username.errors.minlength.requiredLength }} characters long</p>
+      </div>
+      <div *ngIf="username.invalid && username.dirty">
+        <p *ngIf="username.errors.notAUniqueUsername" class="help is-danger">Username already taken</p>
+      </div>
+      <progress *ngIf="username.pending" class="progress is-one-quarter is-primary" max="100">15%</progress>
+    </div>
+
+    <div class="field">
+        <div class="field-label"></div>
+        <div class="field-body">
+          <div class="field is-expanded">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  +91
+                </a>
+              </p>
+              <p class="control is-expanded has-icons-right">
+                <input class="input" type="tel" 
+                [class.is-danger]="phoneNo.touched && phoneNo.invalid" 
+                [class.is-success]="phoneNo.valid"
+                formControlName="phoneNo" placeholder="Phone Number">
+                <span *ngIf="phoneNo.touched && phoneNo.invalid" class="icon is-small is-right has-text-danger">
+                  <i class="fa fa-exclamation-triangle"></i>
+                </span>
+                <span *ngIf="phoneNo.valid" class="icon is-small is-right has-text-success">
+                  <i class="fa fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div *ngIf="phoneNo.touched && phoneNo.invalid">
+                <p *ngIf="phoneNo.errors.required" class="help is-danger">Phone number is required</p>
+                <p *ngIf="phoneNo.errors?.minlength || phoneNo.errors?.maxlength" class="help is-danger">Phone number must be {{ phoneNo.errors.minlength.requiredLength }} digits long</p>
+                <p *ngIf="phoneNo.errors.isNotANum" class="help is-danger">Phone Number cannot contain anything other than digits</p> 
+              </div>
+          </div>
+        </div>      
+    </div>
+  </div>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" type="password" 
+      [class.is-danger]="password.touched && password.invalid" 
+      [class.is-success]="password.valid"
+      formControlName="password" placeholder="Password">
+      <span class="icon is-small is-left" 
+      [class.has-text-danger]="password.touched && password.invalid"
+      [class.has-text-success]="password.valid"
+      >
+        <i class="fa fa-lock"></i>
+      </span>
+      <span *ngIf="password.touched && password.invalid" class="icon is-small is-right has-text-danger">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+      <span *ngIf="password.valid" class="icon is-small is-right has-text-success">
+        <i class="fa fa-check"></i>
+      </span>
+    </p>
+    <div *ngIf="password.touched && password.invalid">
+      <p *ngIf="password.errors.required" class="help is-danger">Password is required</p>
+      <p *ngIf="password.errors?.minlength" class="help is-danger">Password is too short</p>
+    </div>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-success" [class.is-loading]="showSpinner" [disabled]="!form.valid || showSuccess" type="submit" (click)="signUp()">
+        Sign Up
+      </button>
+    </p>
+  </div>
+</form> 
+
+</div>
+

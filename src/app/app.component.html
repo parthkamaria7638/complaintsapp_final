@@ -1,20 +1,121 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<div class="dashboard">
+      <!-- left panel -->
+        <div class="dashboard-panel is-small has-thick-padding has-background-grey-lighter is-hidden-mobile">
+        <div class="has-text-centered">
+          <h2 class="title has-text-black"><a class="has-text-black" routerLink="/">Complaints App</a></h2>
+        </div>
+
+        <br /><br />
+        <aside class="menu has-text-white">
+        <hr>
+          <p class="menu-label">
+            Authentication
+          </p>
+          <ul *ngIf="user == null; else loggedIn2" class="menu-list">
+            <li class="has-text-grey"><a routerLink="signup" routerLinkActive="is-active">Sign Up</a></li>
+            <li class="has-text-grey"><a routerLink="login" routerLinkActive="is-active">Login</a></li>
+          </ul>
+          <ng-template #loggedIn2>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              {{ user?.username }}
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item" routerLink='allcomplaints'>
+                All Complaints
+              </a>
+              <a class="navbar-item" routerLink="regcomplaints">
+                Reg. Complaints
+              </a>
+              <a class="navbar-item" routerLink="employees">
+                Employees
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" (click)="logout()">
+                Logout
+              </a>
+            </div>
+          </div>
+        </ng-template>
+        <hr>
+          <p class="menu-label">
+            Other
+          </p>
+          <ul class="menu-list">          
+            <li class="has-text-grey"><a routerLink="dashboard" routerLinkActive="is-active">Dashboard</a></li>
+            <li class="has-text-grey"><a>Instructions</a></li>
+          </ul>
+        </aside>
+      </div>
+      
+    
+      <!-- main section -->
+      <div class="dashboard-main is-scrollable">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" routerLinkActive="is-active" routerLink="/">
+        Home
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item" *ngIf="user == null; else loggedIn">
+        <div class="buttons">
+          <a class="button is-primary" routerLink='signup'>
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light" routerLink='login'>
+            Log in
+          </a>
+        </div>
+      </div>
+      <!-- Dropdown start -->
+      <ng-template #loggedIn>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            {{ user?.username }}
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" routerLink='allcomplaints'>
+              All Complaints
+            </a>
+            <a class="navbar-item" routerLink="regcomplaints">
+              Reg. Complaints
+            </a>
+            <a class="navbar-item" routerLink="employees">
+              Employees
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" (click)="logout()">
+              Logout
+            </a>
+          </div>
+        </div>
+      </ng-template>
+      
+    <!-- Dropdown end -->
+
+    </div>
+  </div>
+</nav>
+        <flash-messages></flash-messages>
+        <app-spinner *ngIf="showSpinner"></app-spinner>
+        <router-outlet *ngIf="!showSpinner" class="outlet"></router-outlet>
+
+      </div>
+    </div>

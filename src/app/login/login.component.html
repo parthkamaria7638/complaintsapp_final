@@ -1,0 +1,132 @@
+
+<!--<app-spinner *ngIf="showSpinner"></app-spinner>
+<div class="centered">
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" [class.is-danger]="!isEmailValid" [(ngModel)]="email_" name="email_" type="email" placeholder="Email">
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span *ngIf="!isEmailValid" class="icon is-small is-right">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+    </p>
+      <p *ngIf="!isEmailValid" class="help is-danger">This email is invalid</p>
+  </div>
+  <div class="field">
+    <div class="field-body">
+    <div class="field">
+      <p class="control is-expanded has-icons-left">
+        <input class="input" type="text" placeholder="Username">
+        <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+      </p>
+    </div>
+    <div class="field">
+        <div class="field-label"></div>
+        <div class="field-body">
+          <div class="field is-expanded">
+            <div class="field has-addons">
+              <p class="control">
+                <a class="button is-static">
+                  +91
+                </a>
+              </p>
+              <p class="control is-expanded">
+                <input class="input" type="tel" placeholder="Phone Number">
+              </p>
+            </div>
+          </div>
+        </div>      
+    </div>
+  </div>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="Password">
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-success" type="submit" (click)="signUp()">
+        Sign Up
+      </button>
+    </p>
+  </div>
+</div> -->
+
+
+<div class="centered">
+<!-- <article *ngIf="showSuccess" class="message is-success">
+  <div class="message-header">
+    <p>{{ message }}</p>
+  </div>
+</article>
+<article *ngIf="showFailure" class="message is-danger">
+  <div class="message-header">
+    <p>{{ message }}</p>
+  </div>
+</article> -->
+
+<form [formGroup]="form">
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" 
+      formControlName="email"
+      [class.is-danger]="email.touched && email.invalid" 
+      [class.is-success]="email.valid"
+      type="email" placeholder="Email">
+      <span class="icon is-small is-left" 
+      [class.has-text-danger]="email.touched && email.invalid"
+      [class.has-text-success]="email.valid">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span *ngIf="email.touched && email.invalid" class="icon is-small is-right has-text-danger">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+      <span *ngIf="email.valid" class="icon is-small is-right has-text-success">
+        <i class="fa fa-check"></i>
+      </span>
+    </p>
+      <div *ngIf="email.touched && email.invalid">
+        <p *ngIf="email.errors.required" class="help is-danger">Email is required</p>
+        <p *ngIf="email.errors.email && email.dirty" class="help is-danger">Email is invalid</p>
+        <p *ngIf="email.errors.notARegEmail" class="help is-danger">Email not registered</p>
+      </div>
+
+      <progress *ngIf="email.pending" class="progress is-one-quarter is-primary" max="100">15%</progress>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" type="password" 
+      [class.is-danger]="password.touched && password.invalid" 
+      formControlName="password" placeholder="Password">
+      <span class="icon is-small is-left" 
+      [class.has-text-danger]="password.touched && password.invalid"
+      >
+        <i class="fa fa-lock"></i>
+      </span>
+      <span *ngIf="password.touched && password.invalid" class="icon is-small is-right has-text-danger">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+    </p>
+    <div *ngIf="password.touched && password.invalid">
+      <p *ngIf="password.errors.required" class="help is-danger">Password is required</p>
+      <p *ngIf="password.errors?.minlength" class="help is-danger">Password is too short</p>
+    </div>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-success" [class.is-loading]="showSpinner" [disabled]="!form.valid || showSuccess" type="submit" (click)="login()">
+        Login
+      </button>
+    </p>
+  </div>
+</form> 
+
+</div>
+

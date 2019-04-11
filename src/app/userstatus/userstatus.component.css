@@ -1,0 +1,22 @@
+.success {
+    color: rgb(12, 105, 12);
+}
+
+.warning {
+    color: rgb(164, 173, 38);
+}
+
+.danger {
+    color: rgb(161, 12, 12);
+}
+
+.help {
+    color: grey;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+  }

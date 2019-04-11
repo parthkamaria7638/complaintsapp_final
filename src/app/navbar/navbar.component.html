@@ -1,0 +1,78 @@
+<!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand navbar-heading" href="#">Complaints App</a>
+  <div class="form-inline my-2 my-lg-0">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link navbar-heading" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-heading" href="#">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link navbar-heading" href="#">Sign Up</a>
+      </li>
+    </ul>
+  </div>
+  
+</nav> -->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand navbar-heading" routerLink="/">Complaints App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <!-- <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink='/signup' href="#">Signup</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink='/login' href="#">Login</a>
+          </li>
+      </ul> -->
+      <ul class="navbar-nav mr-auto">
+          <ng-template #noLoggedInUser>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/signup">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+          </ng-template>
+          
+          <!-- <li ngbDropdown *ngIf="user; else noLoggedInUser" class="nav-item dropdown">
+            <a  ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+                <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+              </ng-container>
+              <a class="dropdown-item" (click)="logout()">Log Out</a>
+            </div>
+          </li> -->
+          <li ngbDropdown *ngIf="user; else noLoggedInUser" class="nav-item dropdown">
+              <a  ngbDropdownToggle class="dropdown nav-link text-light dropdown-toggle cursor" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> {{ user.username }}</a>
+              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                  <li [routerLinkActive]="['active']" class="nav-item">
+                      <a class="nav-link text-dark dropdown-item cursor">Dashboard</a>
+                  </li>
+                   <li [routerLinkActive]="['active']" class="nav-item">
+                      <a class="nav-link text-dark dropdown-item cursor" routerLink="/allcomplaints">All Complaints</a>
+                  </li>
+                  <li [routerLinkActive]="['active']" class="nav-item">
+                      <a class="nav-link text-dark dropdown-item cursor" routerLink="/regcomplaints">Reg. Complaints</a>
+                  </li> 
+                  <li [routerLinkActive]="['active']" class="nav-item">
+                      <a class="nav-link text-dark dropdown-item cursor" (click)="logout()">Logout</a>
+                  </li>
+              </div>                
+          </li>  
+        </ul>
+    </div>
+    </div>
+</nav>

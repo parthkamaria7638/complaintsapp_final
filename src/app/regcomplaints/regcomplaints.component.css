@@ -1,0 +1,80 @@
+.color-text {
+    color: rgb(68, 115, 158);
+}
+
+.horizontal-rule {
+    border-color: white;
+}
+
+.Complaint_App-card{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.complaint-from-facebook{
+    background-color: #3b5998;
+}
+.complaint-from-twitter{
+    background-color: #38A1F3;
+}
+.complaint-from-reddit{
+    background-color: #ff4301;
+}
+.complaint-from-web{
+    background-color: #52F794;
+}
+
+.container {
+    margin: 8px;
+}
+
+/*
+
+.type {
+    grid-area: type;
+    background-color: red;
+}
+
+.location {
+    grid-area: location;
+    background-color: yellow;
+}
+
+.issuer {
+    grid-area: issuer;
+    background-color: green;
+}
+
+.time {
+    grid-area: time;
+    background-color: blue;
+}
+
+.body {
+    grid-area: body;
+    background-color: blueviolet;
+}
+
+.grid {
+    display: grid;
+    height: 300px;
+    padding-left: 20%;
+    padding-right: 20%;
+    width: 100%;
+    margin-bottom: 40px;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas: 
+            "type . location"
+            "body body body"
+            "issuer . time";
+}
+
+*/
+
+.complaint {
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 20px;
+}

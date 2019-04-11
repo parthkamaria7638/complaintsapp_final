@@ -1,0 +1,57 @@
+<!--<ul>
+  <li *ngFor="let complain of complaints | unanalysed | reverse" class="color-text">
+  Complaint Type: <strong>{{ complain.Type }}</strong> <br>
+  Complaint Body: <strong>{{ complain.Body }}</strong> <br>
+  Complaint Location: <strong>{{ complain.Location }}</strong> <br>
+  Complaint Time: <strong>{{ complain.Timestamp | TimeRemaining }}</strong> <br>
+  <button class="button is-success" (click)="approveComplaint(complain)">Approve</button>
+  <button class="button is-danger" (click)="deleteComplaint(complain)">Delete</button>
+  <hr class="horizontal-rule">
+  </li>
+</ul> 
+-->
+<div class="container" @fadeIn @fadeOut *ngFor="let complain of complaints | unanalysed | reverse">
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img [src]="complain.logoURL" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong *ngIf="complain.platform == 'Twitter'">{{ complain.IssuerName }}</strong>  
+          <strong *ngIf="complain.platform == 'Reddit'">{{ complain.IssuerID }}</strong> 
+          <strong *ngIf="complain.platform == 'Facebook'">{{ complain.Name }}</strong> 
+          <span 
+          class="tag"
+          [class.is-link]="complain.cssClass == 'is-link'"
+          [class.is-danger]="complain.cssClass == 'is-danger'"
+          [class.is-info]="complain.cssClass == 'is-info'"
+          >{{ complain.platform }}</span> 
+          <small>{{ complain.Timestamp | TimeRemaining : currTime }}</small> 
+          <br>
+          <small><strong>Type:</strong>{{ complain.Type }} </small> <br>
+          <small> <strong>Location:</strong> {{ complain.Location }} </small> <br>
+          {{ complain.Body }}
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply" (click)="approveComplaint(complain)">
+            <span class="icon is-small has-text-success">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
+          </a>
+          <a class="level-item" aria-label="retweet" (click)="deleteComplaint(complain)">
+            <span class="icon is-small has-text-danger">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+</div>

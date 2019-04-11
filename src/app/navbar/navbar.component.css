@@ -1,0 +1,14 @@
+.navbar-heading {
+    font-family: 'Lobster';
+    font-style: bold;
+    color: #59bfbd
+}
+
+li {
+    cursor: pointer;
+}
+
+.navbar-font {
+    font-family: 'Helvetica Neue, Playfair Display'
+}
+
